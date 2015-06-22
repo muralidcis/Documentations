@@ -1,0 +1,75 @@
+migrating svn to git
+
+step 1:
+get the svn user name and email 
+
+sudo svn log   | grep '^r' | grep '|' | awk '{print $3}' | sort | uniq > committers.txt
+
+Format the data like the following.
+murali = murali <murali@dcis.net>
+
+copy the committers.txt to authors.txt
+
+
+We first create a directory and initialise it as a git-svn foo repository (the --no-metadata flag tells git to ignore all the SVN junk except the actual commit log). Then we slot our authors file in there to remap our users. Last of all we fetch the code (which might take a while).
+
+step 2:
+mkdir <migrating-svn-foldername>
+
+copy the authors.txt .
+
+cd <migrating-svn-foldername>
+
+Making 2.1 the master ie the trunk and adding tags payment,payment-1.1 and 1.2 
+
+svn git svn init <svn+ssh or http the serve path>  -T or -tags=thetagname, -trunk/-T=thetrunk name
+
+Example:
+sudo git svn init svn+ssh://root@servepath/filer/fd-module/ -T=payment-2.1 --tags=payment --tags=payment-1.1 --tags=payment-1.2 --tags=\
+payment-2.0  --no-metadata
+
+step 3:
+git config svn.authorsfile ../authors.txt 
+
+
+step 4:
+git svn fetch
+
+step 5:
+the svn part is done, now lets make the git struture
+
+cd ..
+git clone <migrating-svn-foldername>  <new git folder name>
+
+
+step 6:
+Create a new reposotrie in the git, lets say <payment-api>
+
+step 7:
+From the current folder
+
+git remote set-url origin https://muralidcis@github.com/FormsDirect/payment-api
+let pull for any changes..
+sudo git pull
+sudo git push origin master /sudo git push --all
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
