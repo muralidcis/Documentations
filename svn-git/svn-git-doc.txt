@@ -54,6 +54,21 @@ sudo git pull
 sudo git push origin master /sudo git push --all
 
 
+Example:
+Example:
+
+migrating svn-i90 to git
+mkdir migrate-i90
+cd migrate-i90
+cp authors.txt and place is out side the migrate-i90 folder 
+
+git svn init svn+ssh://root@servepath/filer/FORMS/trunk/i90 --no-metadata
+git config svn.authorsfile ../authors.txt
+git svn fetch
+git clone migrate-i90/ i90
+git remote set-url origin https://muralidcis@github.com/FormsDirect/I-90
+git pull
+git push origin master
 
 
 
