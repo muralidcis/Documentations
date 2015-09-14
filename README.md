@@ -51,7 +51,7 @@ In case if you still find the local is not updated with remote then reset/head m
 <b>Step 4:</b>
 
 Tagging the source:
-git tag -a app-15-sep-2015 -m 'tagging app-15-sep-1015 for release'  
+git tag -a app-15-sep-2015 -m 'tagging app-15-sep-2015 for release'  
 git push app-15-sep-2015
 
 <b>Step 5: </b>
