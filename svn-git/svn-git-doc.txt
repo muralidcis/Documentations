@@ -70,7 +70,25 @@ git remote set-url origin https://muralidcis@github.com/FormsDirect/I-90
 git pull
 git push origin master
 
+step 1:
+ 2087  git svn init svn+ssh://root@servepath/filer/admin-2.0 --trunk=trunk --tags=releases/tags/ --branches=branches/ --no-metadata
+ 2088  git config svn.authorsfile ../authors.txt
+ 2089  git svn fetch
 
+step 2: 
+ 2092  git clone migrate-newadmin/ newadmin2
+ 2094  git remote set-url origin https://muralidcis@github.com/FormsDirect/admin-site 
+ 2128  git config --local --list
+
+step 3:
+ 2129  for branch in `git branch -r | grep "branches/" | sed 's/ branches\///'`; do   git branch $branch refs/remotes/$branch; done
+ 2130  for tag in `git branch -r | grep "tags/" | sed 's/ tags\///'`; do   git tag -a -m"Converting SVN tags" $tag refs/remotes/$tag; done
+ 2131  for tag in `git branch -r | grep "tags/" | sed 's/ tags\///'`; do   git branch $tag refs/remotes/$tag; done
+
+step 4: 
+ 2140  git remote set-url origin https://muralidcis@github.com/FormsDirect/admin-site 
+ 2152  git pull
+ 2153  git push origin --mirror or  git push origin --all or   git push --all origin
 
 
 
