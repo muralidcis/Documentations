@@ -91,6 +91,44 @@ step 4:
  2153  git push origin --mirror or  git push origin --all or   git push --all origin
 
 
+Example done on 13/july/2016
+step 1: create ssh key in local system, 
+
+@snowleapord:
+ ssh-keygen -t rsa
+
+push the key to server.
+ssh-copy-id -i ~/.ssh/id_rsa.pub root@servepath
+
+so when we run the svn inti, comman it can run without the svn password.
+
+step 2:
+
+mkdir svn-idca-efiling
+cd svn-idca-efiling/
+## we need only to migrate branches/Canda-efiling  to git where this branch will act as master. 
+
+git svn init svn+ssh://root@servepath/filer/efiling/   --trunk=branches/Canada-efiling/ --branches=branches/Canada-efiling/  --no-metadata
+
+git config svn.authorsfile ../authors.txt
+git svn fetch
+
+## move out of the folder, svn-idca-efiling and clone to a new folder
+git clone svn-idca-efiling/ idca-efiling
+
+cd idca-efiling/
+
+step 3:
+create a repo in git, pull it to the current folder ie, idca-efiling.
+
+git remote set-url origin https://muralidcis@github.com/FormsDirect/idca-efiling
+
+from root i swaped to the user, so it have no problem, in using git. rather then root user name.
+
+sudo git pull --allow-unrelated-histories
+
+sudo git push origin master. 
+
 
 
 
