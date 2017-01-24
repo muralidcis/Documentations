@@ -1,0 +1,12 @@
+How to generate Changelog.
+Tag the release version.
+git tag -a 
+
+Generate the Changelog.
+github_changelog_generator  -umuralidcis --t <........>  --between-tags 3.0.10-RC1,3.0.10-RC1 --future-release [3.0.10-RC2]
+
+Add the changes to release notes.
+Commit the changes and push 
+
+Tag the version and upload the files.
+git push --force origin refs/tags/3.0.9-RC1:refs/tags/3.0.9-RC1
