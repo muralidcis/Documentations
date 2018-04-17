@@ -57,3 +57,7 @@ git push app-15-sep-2015
 <b>Step 5: </b>
 Release the war:
 Under the relese tab add the release notes and upload the war. 
+
+##
+## Addition of changes
+## 
